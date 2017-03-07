@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>index</title>
+<title>统一异常处理</title>
 </head>
 <body>
-Thymeleaf模板引擎
-<h1 th:text="${host}">Hello World</h1>
+<h1>Error Handler</h1>
+<div th:text="${url}"></div>
+<div th:text="${exception.message}"></div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 package com.yanwang;
 
-import com.yanwang.service.BlogProperties;
+import com.yanwang.service.impl.BlogProperties;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
