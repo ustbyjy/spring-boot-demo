@@ -17,11 +17,16 @@ import java.io.Serializable;
 public class User implements Serializable {
     private static final long serialVersionUID = -1L;
     @Id
+    @GeneratedValue
     private Long id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private Integer age;
+
+    public User() {
+
+    }
 
     public User(String name, Integer age) {
         this.name = name;

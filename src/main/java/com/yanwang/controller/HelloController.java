@@ -4,7 +4,6 @@ import com.yanwang.exception.MyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,10 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    @ResponseBody
     @RequestMapping("/hello")
     public String hello() {
-        return "Hello World";
+        return "hello";
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
     }
 
     @RequestMapping("/")
