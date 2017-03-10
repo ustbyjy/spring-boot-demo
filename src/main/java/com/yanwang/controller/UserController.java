@@ -10,7 +10,7 @@ import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
- * Description:
+ * Description: @RestController等同于@Controller + @ResponseBody
  * User: Administrator
  * Date: 2017/3/6
  * Time: 18:26

@@ -21,7 +21,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.7</java.version>
+        <jdk.version>1.7</jdk.version>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <spring-boot-mybatis.version>1.2.0</spring-boot-mybatis.version>
         <spring-boot-redis.version>1.4.5.RELEASE</spring-boot-redis.version>
@@ -29,6 +29,7 @@
         <spring-boot-velocity.version>1.4.5.RELEASE</spring-boot-velocity.version>
         <springfox-swagger.version>2.6.1</springfox-swagger.version>
         <mysql.version>5.1.21</mysql.version>
+        <druid.version>1.0.18</druid.version>
         <ehcache.version>2.10.3</ehcache.version>
     </properties>
 
@@ -128,15 +129,26 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <version>${ehcache.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
