@@ -1,7 +1,6 @@
 package com.yanwang;
 
 import com.yanwang.async.Task;
-import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,8 +18,8 @@ import javax.mail.internet.MimeMessage;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Future;
+import java.util.logging.Logger;
 
-import static org.apache.log4j.Logger.getLogger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,7 +31,7 @@ import static org.apache.log4j.Logger.getLogger;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootDemoApplication.class)
 public class Chapter4ApplicationTest {
-    private static Logger logger = getLogger(SpringBootDemoApplication.class);
+    private static Logger logger = Logger.getLogger(SpringBootDemoApplication.class.getName());
 
     @Autowired
     private Task task;

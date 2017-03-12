@@ -38,6 +38,7 @@ public class SpringBootDemoApplication extends WebMvcConfigurerAdapter {
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
         fastConverter.setFastJsonConfig(fastJsonConfig);
+
         converters.add(fastConverter);
     }
 }

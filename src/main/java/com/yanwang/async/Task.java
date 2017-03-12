@@ -1,12 +1,12 @@
 package com.yanwang.async;
 
-import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 import java.util.concurrent.Future;
+import java.util.logging.Logger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +17,7 @@ import java.util.concurrent.Future;
  */
 @Component
 public class Task {
-    private static Logger logger = Logger.getLogger(Task.class);
+    private static Logger logger = Logger.getLogger(Task.class.getName());
 
     private static Random random = new Random();
 
