@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.MessageSource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -22,8 +23,12 @@ public class Chapter2ApplicationTest {
     @Autowired
     private BlogProperties blogProperties;
 
+    @Autowired
+    private MessageSource messageSource;
+
     @Test
     public void test() {
+        System.out.println(messageSource.getClass().getName());
         Assert.assertEquals("程序员DD", blogProperties.getName());
         Assert.assertEquals("Spring Boot教程", blogProperties.getTitle());
         System.out.println("desc: " + blogProperties.getDesc());
