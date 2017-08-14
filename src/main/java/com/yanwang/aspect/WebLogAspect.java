@@ -1,6 +1,5 @@
 package com.yanwang.aspect;
 
-import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,6 +12,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,7 +25,7 @@ import java.util.Arrays;
 @Order(5)
 @Component
 public class WebLogAspect {
-    private static Logger logger = Logger.getLogger(WebLogAspect.class);
+    private static Logger logger = Logger.getLogger(WebLogAspect.class.getName());
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
     @Pointcut("execution(public * com.yanwang.controller.*.*(..))")
