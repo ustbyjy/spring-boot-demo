@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created with IntelliJ IDEA.
- * Description:
+ * Description: 通过@ControllerAdvice，可以将对于Controller的全局配置放置在同一个位置，
+ * 对于@ExceptionHandler、@InitBinder、@ModelAttribute注解有效，
+ * 此例就是全局异常处理，用到了@ExceptionHander注解
  * User: Administrator
  * Date: 2017/3/7
  * Time: 12:13
