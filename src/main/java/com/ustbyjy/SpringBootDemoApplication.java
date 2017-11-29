@@ -10,6 +10,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
@@ -33,6 +34,17 @@ public class SpringBootDemoApplication extends WebMvcConfigurerAdapter {
         fastConverter.setFastJsonConfig(fastJsonConfig);
         HttpMessageConverter<?> converter = fastConverter;
         return new HttpMessageConverters(converter);
+    }
+
+    /**
+     * 自定义资源映射
+     *
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/res/**").addResourceLocations("classpath:/res/");
+        super.addResourceHandlers(registry);
     }
 
     /**
