@@ -1,4 +1,5 @@
-#SpringBoot打不同环境的包
+# SpringBoot打不同环境的包
+---------------------------------------------
 **方法1**
 
 在application.properties中设置spring.profiles.active=dev，说明默认以dev环境设置
