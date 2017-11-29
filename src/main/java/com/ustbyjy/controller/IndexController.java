@@ -3,6 +3,8 @@ package com.ustbyjy.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:
@@ -14,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @RequestMapping("/index")
-    public String index() {
+    public String index(HttpServletRequest httpServletRequest) {
+        httpServletRequest.getSession().setAttribute("hello", "world");
         return "index";
     }
 
