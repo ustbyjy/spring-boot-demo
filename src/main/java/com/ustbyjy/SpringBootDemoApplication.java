@@ -29,7 +29,6 @@ import javax.servlet.MultipartConfigElement;
  */
 @SpringBootApplication
 @EnableAsync
-@EnableCaching
 @ServletComponentScan
 // 使用@ComponentScan注解可以指定扫描的包，默认会扫描启动类同包以及子包下的注解
 //@ComponentScan(basePackages = "com.ustbyjy")
