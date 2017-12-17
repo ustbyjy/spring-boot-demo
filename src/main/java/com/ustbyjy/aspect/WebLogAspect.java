@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  * Created with IntelliJ IDEA.
- * Description:
+ * Description: @Order(i)注解来标识切面的优先级，i的值越小，优先级越高。
  * User: Administrator
  * Date: 2017/3/7
  * Time: 20:12
