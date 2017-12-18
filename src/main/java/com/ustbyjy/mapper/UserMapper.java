@@ -1,10 +1,7 @@
 package com.ustbyjy.mapper;
 
 import com.ustbyjy.domain.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,5 +17,6 @@ public interface UserMapper {
     User findByName(@Param("name") String name);
 
     @Insert("INSERT INTO USER(NAME, AGE) VALUES(#{name}, #{age})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(@Param("name") String name, @Param("age") Integer age);
 }

@@ -13,9 +13,11 @@ import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -36,11 +38,24 @@ public class SpringBootDemoApplication extends WebMvcConfigurerAdapter {
     public static void main(String[] args) {
         // 默认调用方法
 //        SpringApplication.run(SpringBootDemoApplication.class, args);
+        SpringApplication springApplication = new SpringApplication(SpringBootDemoApplication.class);
 
         // 自定义Banner显示方式，Banner.Mode.OFF:关闭，Banner.Mode.CONSOLE:控制台输出，默认方式，Banner.Mode.LOG:日志输出方式
-        SpringApplication springApplication = new SpringApplication(SpringBootDemoApplication.class);
         springApplication.setBannerMode(Banner.Mode.CONSOLE);
-        springApplication.run(args);
+
+        ApplicationContext applicationContext = springApplication.run(args);
+        // 打印所有创建的bean
+        String[] beanNames = applicationContext.getBeanDefinitionNames();
+        System.out.println("所有bean的个数：" + beanNames.length);
+        for (String beanName : beanNames) {
+            System.out.println(beanName);
+        }
+
+        String[] serviceBeanNames = applicationContext.getBeanNamesForAnnotation(Service.class);
+        System.out.println("所有service的个数：" + serviceBeanNames.length);
+        for (String beanName : serviceBeanNames) {
+            System.out.println(beanName);
+        }
     }
 
     @Bean
