@@ -123,4 +123,5 @@ public class SpringBootDemoApplication extends WebMvcConfigurerAdapter {
 //
 //        converters.add(fastConverter);
 //    }
+
 }

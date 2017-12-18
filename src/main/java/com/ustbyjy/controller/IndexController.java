@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 
     @RequestMapping("/index")
-    public String index(HttpServletRequest httpServletRequest) {
-        httpServletRequest.getSession().setAttribute("hello", "world");
+    public String index(HttpServletRequest request) {
+//        request.getSession().setAttribute("hello", "world");
         return "index";
     }
 

@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>h1</h1>
-</body>
 <script src="${request.contextPath}${urls.getForLookupPath('/js/index.js')}"></script>
+<script src="${request.contextPath}/webjars/jquery/1.11.1/jquery.js"></script>
+</body>
 </html>
