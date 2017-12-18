@@ -27,8 +27,8 @@ public class I18nController {
      * 2、LocaleContextHolder.getLocale()；
      * 3、RequestContextUtils.getLocale(request)；
      *
-     * @param request
-     * @param locale
+     * @param request 请求
+     * @param locale  本地化
      * @return
      */
     @RequestMapping(value = {"", "/"})

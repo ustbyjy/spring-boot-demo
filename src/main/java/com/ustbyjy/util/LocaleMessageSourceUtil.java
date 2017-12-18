@@ -18,7 +18,6 @@ public class LocaleMessageSourceUtil {
      * @return String
      */
     public String getMessage(String code) {
-
         return getMessage(code, null);
     }
 
@@ -45,6 +44,5 @@ public class LocaleMessageSourceUtil {
         Locale locale = LocaleContextHolder.getLocale();
 
         return messageSource.getMessage(code, args, defaultMessage, locale);
-
     }
 }
