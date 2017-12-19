@@ -18,8 +18,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -106,6 +106,19 @@ public class SpringBootDemoApplication extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //        registry.addResourceHandler("/res/**").addResourceLocations("classpath:/res/");
         super.addResourceHandlers(registry);
+    }
+
+    /**
+     * 如果继承 WebMvcConfigurationSupport，会导致静态资源无法访问
+     *
+     * @param configurer
+     */
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer) {
+        // 设置是否使用后缀模式匹配，如"/user"是否匹配"/user.*"，默认true
+        configurer.setUseSuffixPatternMatch(false);
+        // 设置是否使用反斜杠匹配，如"/user"是否匹配"/user/"，默认true
+        configurer.setUseTrailingSlashMatch(true);
     }
 
     /**
