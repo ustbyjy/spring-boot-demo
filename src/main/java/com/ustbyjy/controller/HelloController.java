@@ -3,7 +3,10 @@ package com.ustbyjy.controller;
 import com.ustbyjy.exception.MyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloController {
 
     @RequestMapping("/hello")
-    public String hello() {
+    public String hello(Model model, Map<String, Object> map, ModelMap modelMap) {
+        System.out.println(model == map);
+        System.out.println(model == modelMap);
         return "hello";
     }
 
