@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.concurrent.ScheduledFuture;
 
 @RestController
-public class DynamicTask {
+public class DynamicTaskController {
 
     private static ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
 
