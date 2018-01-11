@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <contextName>spring-boot-demo</contextName>
-    <property name="log.path" value="/export/logs/spring-boot-demo" />
+    <property name="logPath" value="/export/logs/spring-boot-demo" />
     <property name="contextName" value="spring-boot-demo" />
 
     <!--输出到控制台-->
@@ -13,7 +13,7 @@
     <!--输出到文件-->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.path}/${contextName}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${logPath}/${contextName}.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
@@ -23,11 +23,11 @@
 
     <!-- 测试环境+开发环境，多个使用逗号隔开 -->
     <springProfile name="test,dev">
-        <logger name="com.ustbyjy" level="DEBUG" additivity="false" />
+        <logger name="com.ustbyjy" level="DEBUG" />
     </springProfile>
     <!-- 生产环境. -->
     <springProfile name="prod">
-        <logger name="com.ustbyjy" level="WARN" additivity="false" />
+        <logger name="com.ustbyjy" level="WARN" />
     </springProfile>
 
     <root level="INFO">
