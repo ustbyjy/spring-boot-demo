@@ -31,12 +31,25 @@ public class CookieController {
     public String setCookie(String name, String value, HttpServletRequest request, HttpServletResponse response) {
         logger.info("name={}，value={}", name, value);
         try {
-            Cookie cookie = new Cookie(name, value);
-            cookie.setDomain("zulong.com");
-            cookie.setPath("/");
-            cookie.setMaxAge(Integer.MAX_VALUE);
+            // 带domain
+            Cookie cookie1 = new Cookie(name, value);
+            cookie1.setDomain("zulong.com");
+            cookie1.setPath("/");
+            cookie1.setMaxAge(Integer.MAX_VALUE);
 
-            response.addCookie(cookie);
+            // 不带domain，默认为应用的域名
+            Cookie cookie2 = new Cookie(name, value);
+            cookie2.setPath("/");
+            cookie2.setMaxAge(Integer.MAX_VALUE);
+
+            // 不带domain，带path
+            Cookie cookie3 = new Cookie(name, value);
+            cookie3.setPath("/cookie");
+            cookie3.setMaxAge(Integer.MAX_VALUE);
+
+            response.addCookie(cookie1);
+            response.addCookie(cookie2);
+            response.addCookie(cookie3);
 
             return SUCCESS;
         } catch (Exception e) {
@@ -58,14 +71,15 @@ public class CookieController {
     public String getCookie(String name, String value, HttpServletRequest request, HttpServletResponse response) {
         logger.info("name={}", name);
         try {
+            boolean found = false;
             for (Cookie cookie : request.getCookies()) {
+                logger.info("name={}，value={}，domain={}，path={}，maxAge={}", cookie.getName(), cookie.getValue(), cookie.getDomain(), cookie.getPath(), cookie.getMaxAge());
                 if (cookie.getName().equals(name)) {
-                    logger.info("name={}，value={}，domain={}，path={}，maxAge={}", cookie.getName(), cookie.getValue(), cookie.getDomain(), cookie.getPath(), cookie.getMaxAge());
-                    return SUCCESS;
+                    found = true;
                 }
             }
 
-            return NOT_FOUND;
+            return found ? SUCCESS : NOT_FOUND;
         } catch (Exception e) {
             logger.error("set cookie error", e);
             return ERROR;
@@ -85,9 +99,11 @@ public class CookieController {
         logger.info("name={}", name);
         try {
             for (Cookie cookie : request.getCookies()) {
+                logger.info("name={}，value={}，domain={}，path={}，maxAge={}", cookie.getName(), cookie.getValue(), cookie.getDomain(), cookie.getPath(), cookie.getMaxAge());
                 if (cookie.getName().equals(name)) {
-                    logger.info("name={}，value={}，domain={}，path={}，maxAge={}", cookie.getName(), cookie.getValue(), cookie.getDomain(), cookie.getPath(), cookie.getMaxAge());
+                    // 不设置domain则默认为应用的域名
                     cookie.setDomain("zulong.com");
+                    // 不设置path则默认为根目录"/"
                     cookie.setPath("/");
                     cookie.setMaxAge(0);
 
