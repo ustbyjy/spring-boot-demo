@@ -20,4 +20,10 @@ public class DemoController {
         List<Demo> result = demoService.likeName(name);
         return result;
     }
+
+    @RequestMapping("/add")
+    public boolean add(String name) {
+        boolean result = demoService.insert(name);
+        return result;
+    }
 }

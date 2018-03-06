@@ -16,5 +16,10 @@ public class DemoService {
     public List<Demo> likeName(String name) {
         return demoMapper.likeName(name);
     }
-    
+
+    public boolean insert(String name) {
+        int rows = demoMapper.insert(name);
+        return rows == 1;
+    }
+
 }
